@@ -26,27 +26,29 @@ add_definitions(-std=c++11)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-add_executable(bc2cnf bc2cnf.cc ${SOURCES})
-add_executable(bc2edimacs bc2edimacs.cc ${SOURCES})
-add_executable(edimacs2bc edimacs2bc.cc ${SOURCES})
-add_executable(bc2iscas89 bc2iscas89.cc ${SOURCES})
+add_library(circuits ${SOURCES})
 
-add_subdirectory(zchaff.2008.10.12)
-add_executable(bczchaff bczchaff.cc bczchaff_solve.cc ${SOURCES})
-set_target_properties(bczchaff PROPERTIES
-	COMPILE_DEFINITIONS "BC_HAS_ZCHAFF"
-	INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR};${zchaff_SOURCE_DIR}")
-target_link_libraries(bczchaff sat)
+#add_executable(bc2cnf bc2cnf.cc ${SOURCES})
+#add_executable(bc2edimacs bc2edimacs.cc ${SOURCES})
+#add_executable(edimacs2bc edimacs2bc.cc ${SOURCES})
+#add_executable(bc2iscas89 bc2iscas89.cc ${SOURCES})
 
-add_subdirectory(minisat-2.2.0)
-add_executable(bcminisat2core bcminisat.cc bcminisat220_solve.cc ${SOURCES})
-set_target_properties(bcminisat2core PROPERTIES
-	COMPILE_DEFINITIONS "BC_HAS_MINISAT;MINISAT220CORE"
-	INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR};${minisat_SOURCE_DIR};${minisat_SOURCE_DIR}/minisat/core")
-target_link_libraries(bcminisat2core minisat-lib-shared)
+# add_subdirectory(zchaff.2008.10.12)
+# add_executable(bczchaff bczchaff.cc bczchaff_solve.cc ${SOURCES})
+# set_target_properties(bczchaff PROPERTIES
+# 	COMPILE_DEFINITIONS "BC_HAS_ZCHAFF"
+# 	INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR};${zchaff_SOURCE_DIR}")
+# target_link_libraries(bczchaff sat)
 
-add_executable(bcminisat2simp bcminisat.cc bcminisat220_solve.cc ${SOURCES})
-set_target_properties(bcminisat2simp PROPERTIES
-	COMPILE_DEFINITIONS "BC_HAS_MINISAT;MINISAT220SIMP"
-	INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR};${minisat_SOURCE_DIR};${minisat_SOURCE_DIR}/minisat/simp")
-target_link_libraries(bcminisat2simp minisat-lib-shared)
+# add_subdirectory(minisat-2.2.0)
+# add_executable(bcminisat2core bcminisat.cc bcminisat220_solve.cc ${SOURCES})
+# set_target_properties(bcminisat2core PROPERTIES
+# 	COMPILE_DEFINITIONS "BC_HAS_MINISAT;MINISAT220CORE"
+# 	INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR};${minisat_SOURCE_DIR};${minisat_SOURCE_DIR}/minisat/core")
+# target_link_libraries(bcminisat2core minisat-lib-shared)
+
+# add_executable(bcminisat2simp bcminisat.cc bcminisat220_solve.cc ${SOURCES})
+# set_target_properties(bcminisat2simp PROPERTIES
+# 	COMPILE_DEFINITIONS "BC_HAS_MINISAT;MINISAT220SIMP"
+# 	INCLUDE_DIRECTORIES "${PROJECT_SOURCE_DIR};${minisat_SOURCE_DIR};${minisat_SOURCE_DIR}/minisat/simp")
+# target_link_libraries(bcminisat2simp minisat-lib-shared)
