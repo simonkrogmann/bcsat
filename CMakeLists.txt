@@ -22,7 +22,7 @@ set(SOURCES defs.cc bc.cc gate.cc gatehash.cc handle.cc timer.cc heap.cc
             ${FLEX_bcsat_lexer_OUTPUTS}
             ${FLEX_bcsat_lexer11_OUTPUTS})
 
-add_definitions(-std=c++11)
+add_definitions(-std=c++11 -w)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
